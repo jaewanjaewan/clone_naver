@@ -1,0 +1,363 @@
+*{
+   box-sizing: border-box; /* 보더굵기 + 패딩넓이까지 합침 모든 태그에 다 주기 */
+}
+html, body{ /* 브라우저가 기본으로주는 margin, padding 없애기 */
+    margin: 0;
+    padding: 0;
+    font-family: Dotum,'돋움',Helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+h1, h2, h3, h4, h5, h6{ /* 기본 세팅되어있는 마진 초기화 */
+    margin: 0;
+}
+.blind{  /* id는 고유한것, 중복안됨 class는 여러번 쓸수있고 여러클래스 동시적용가능 */
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+.center-align{ 
+    margin: 0 auto;
+    width: 1080px;
+}
+ #header-search h1{ /* > 생략가능 */
+    width: 198px;
+    height: 48px;
+    display: inline-block; /* div의 마진영역 없앰(한 블록에 나란히 표현가능) */
+    /* background-image: url(image/sp_search.png);
+    background-position: -4px -4px; /* 왼쪽으로 4px, 위로 4px 이동 마이너스는 왼쪽, 위쪽 플러스는 오른쪽, 아래쪽 */
+    /* background-repeat: no-repeat; 이미지가 반복되서 나타나지않음 */ 
+    background: url(image/sp_search.png) -4px -4px no-repeat;
+    vertical-align: middle; /* display가 inline block일때만 사용가능, 같은div안에있는 컨텐츠 정렬 */
+    position: relative;
+    top: -5px;
+    left: 1px;
+}
+#header-search h1 span{
+    display: none;
+}
+/* #header-center h1{
+   자식이 아닌 자손관계 
+} */
+#header-search h2{
+    display: none;
+}
+#header-search fieldset{
+    margin-left: 18px;
+    padding: 12px 0 12px 10px; /* 위 오 아 왼 시계방향 마진도 같음 */
+    width: 521px;
+    height: 49px;
+    display: inline-block;
+    border: 2px solid #03cf5d;
+    box-sizing: border-box; 
+    vertical-align: middle; /* display가 inline block일때만 사용가능, 같은div안에있는 컨텐츠 정렬 */
+    position: relative; /* 얘한테 이걸줘야 button이 딱붙음, 졍렬하는 방법은 여러가지 */
+}
+#header-search a{
+    text-decoration: none; /* 밑줄제거 */
+}
+#header-search fieldset input{
+    border: none;
+    padding: 0;
+    outline: none; /* outline: 커서가 있을때 border */
+    vertical-align: top;
+    width: 405px;
+    height: 23px;
+   /* input은 기본적으로 인라인블럭 */
+}
+#header-search fieldset button{
+    width: 49px;
+    height: 49px;
+    border: none;  /* 기본 css 설정지움 */
+    padding: 0; /* 기본 css 설정지움 */
+    background: #03cf5d;
+    position: absolute; /* 원래는 컨테이닝블록(조상)이 fieldset이 아니라 html인데(모든조상이 다 static이면) fieldset에 relative를 줬기때문에 fieldset이 조상이고 얘한테 붙음 */
+    right: -2px;
+    top: -2px;
+}
+#search-keyboard{
+    background-image: url(image/sp_search.png);
+    background-repeat: no-repeat;
+    background-position: -33px -60px;
+    width: 19px;
+    height: 11px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 6px; /* 위아, 오왼 합친거 */
+    margin-right: 4px;
+}
+#search-history{
+    background-image: url(image/sp_search.png);
+    background-repeat: no-repeat;
+    background-position: -87px -60px;
+    width: 9px;
+    height: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 6px;
+}
+#search-image{
+    background-image: url(image/sp_search.png);
+    background-position: -3px -60px; /* 왼쪽으로 3 위쪽으로 60 이동 */
+    background-repeat: no-repeat; 
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    margin: 10px;
+}
+nav{
+    height: 46px;
+    border-top: 1px solid #f1f3f6;
+    border-bottom: 1px solid #d1d8e4;
+}
+nav ul{
+    display: inline-block;
+    margin: 0;
+    padding: 16px 0 0 4px;
+    list-style: none; /* 점 없앰 */
+}
+nav li{
+    display: inline-block;
+}
+nav li span:first-child{ /* 우선순위: 태그-동, 클래스-은, id-금 메달이 같을땐 개수가 많은게 우선순위 더 높고 개수도 같다면 밑에께 더높다. */
+    height: 16px;        /* 우선순위: 그냥 !important주면 1순위 됨 */
+    display: inline-block;
+    background-image: url(image/sp_nav.png);
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+nav li:first-child span:first-child{
+    width: 25px;
+    background-position: 0 -285px;
+    margin-left: 0;
+}
+nav li:nth-child(2) span:first-child{ /* nth-child 실무에선 변경사항때문에 안쓰는게 좋음 */ 
+    width: 27px;
+    background-position: -279px -52px;
+}
+nav li:nth-child(3) span:first-child{
+    width: 40px;
+    background-position: -100px -182px;
+}
+nav li:nth-child(4) span:first-child {
+    width: 40px;
+    background-position: -101px -156px;
+}
+nav li:nth-child(5) span:first-child {
+    width: 26px;
+    background-position: -279px -156px;
+}
+nav li:nth-child(6) span:first-child {
+    width: 25px;
+    background-position: -70px -285px;
+}
+nav li:nth-child(7) span:first-child {
+    width: 35px;
+    background-position: -125px -130px;
+}
+nav li:nth-child(8) span:first-child {
+    width: 26px;
+    background-position: -279px -208px;
+}
+nav li:nth-child(9) span:first-child {
+    width: 29px;
+    background-position: -128px -104px;
+}
+nav li:nth-child(10) span:first-child {
+    width: 26px;
+    background-position: -36px -259px;
+}
+nav li:nth-child(11) span:first-child {
+    width: 39px;
+    background-position: -151px -156px;
+}
+nav li:nth-child(12) span:first-child {
+    width: 26px;
+    background-position: -279px -130px;
+}
+nav li:nth-child(13) span:first-child {
+    width: 28px;
+    background-position: -234px -233px;
+}
+nav li:nth-child(14) span:first-child {
+    width: 26px;
+    background-position: -72px -259px;
+}
+nav li:nth-child(15) span:first-child {
+    width: 13px;
+    background-position: -140px -78px;
+}
+nav li:nth-child(16) span:first-child {
+    width: 26px;
+    background-position: -279px 0;
+}
+nav li.more:first-child span:first-child {
+    width: 55px;
+    background-position: 0 -104px;
+}
+#header-top{
+     float: right; /* float을 주면 컨텐츠가 둥둥뜨기 때문에 형제태그가 그 공간을 차지(float이 차지하는 공간은 피해서) */ 
+     margin-top: 8px;
+}
+#header-search{
+    clear: both; /* 형제태그가 그 공간을 차지하는것을 막음, 원래대로 돌아옴 */
+    padding-top: 45px;
+}
+#header-top span{
+    color: #888;
+    letter-spacing: -1px; /* 문자사이 간격 */
+    font-size: 13px;
+    line-height: 22px;
+}
+header{
+    height: 170px;
+}
+.nav-divider{
+    display: inline-block;
+    margin: 18px 16px 0;
+    width: 1px;
+    height: 14px;
+    background: #d9dce0;
+}
+#search-ranking {
+    position: absolute;
+    top: 16px;
+    right: 100px;
+}
+
+#rank-number{
+    margin-top: -9px;
+    color: #00ab33;
+    font-size: 16px;
+}
+.relative{
+    position: relative;
+}
+main{
+    background-color: #f2f4f7;
+     overflow: auto; /* 요소내의 컨텐츠가 너무커서 요소내에 모두 보여주기 힘들때 그것을 어떻게 보여줄지 지정 auto: 스크롤바가 생김 */
+    /* display: inline-block;
+    width: 100%;  -> 마진상쇄를 없애는 코드 */
+} 
+#main-centered{
+    padding: 8px 10px;
+    width: 1100px;
+}
+#main-ad{
+    display: inline-block;
+    width: 740px;
+    height: 120px;
+    background: #555;
+    margin-right: 8px; /* 각 구역 마진 줄때는 한방면으로 통일하기 */
+    margin-bottom: 8px;
+}
+#main-login{
+    display: inline-block;
+    width: 332px;
+    height: 120px;
+    vertical-align: top; /* 위로 정렬 */
+    background-color: white;
+    margin-bottom: 8px;
+}
+#main-second-block .inline-block:first-child{
+    width: 740px;
+}
+#main-second-block .inline-block:last-child{
+    width: 332px;
+    vertical-align: top;
+}
+#main-ytn{
+    display: inline-block;
+    width: 740px;
+    height: 46px;
+    background-color: white;
+    margin-right: 8px; /* 각 구역 마진 줄때는 한방면으로 통일하기 */
+    margin-bottom: 8px;
+}
+#main-ytn h3, #main-ytn ol{ /* 그냥 ol만쓰면 전체 ol에 다 적용될수있음 */
+    display: inline-block;
+}
+#main-newsstand{
+    display: inline-block;
+    width: 740px;
+    height: 246px;
+    background-color: white;
+    margin-right: 8px; /* 각 구역 마진 줄때는 한방면으로 통일하기 */
+    margin-bottom: 8px;
+}
+#main-newsstand h3{
+    height: 45px;
+    border-bottom: 1px solid #ebeef5;
+}
+#main-newsstand ul{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#main-newsstand li{
+    float: left; /* display: inline-block 하면 인라인블록사이에 문제생겨서 float으로 해결 */
+    width: calc(100% / 6); /* 똑같은 크기로 균등하게 6등분으로 나눈다 */
+    height: 67px;
+    border-right: 1px solid #f1f3f6;
+    border-bottom: 1px solid #f1f3f6;
+    text-align: center; /* 가로 가운데 정렬 */
+}
+#main-newsstand li img{
+    position: relative; /* 세로 가운데 정렬하는 세트이다. */
+    top: 50%; /* 기준이 컨텐츠 윗부분 보더가 되서 조금더 내려와 보임 */
+    transform: translateY(-50%); /* 이걸줌으로써 딱 가운데 정렬됨 */ 
+}
+#main-weather{
+    display: inline-block;
+    width: 332px;
+    height: 142px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+#main-second-ad{
+    display: inline-block;
+    width: 332px;
+    height: 150px;
+    background: #555;
+    margin-bottom: 8px;
+}
+#main-category{
+    float: left; /* display: inline-block 하면 인라인블록사이에 문제생겨서 float으로 해결, flex로도 해결가능 */
+    width: 740px;
+    height: 837px;
+    background-color: white;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+#main-shopping{
+    float: left; /* display: inline-block 하면 인라인블록사이에 문제생겨서 float으로 해결 */
+    width: 332px;
+    height: 837px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+#main-third-block, 
+#main-fourth-block{
+    display: inline-block;
+    width: 100%; /* float이랑 마진상쇄 해결하는 방법 */
+}
+#main-event{
+    float: left; /* display: inline-block 하면 인라인블록사이에 문제생겨서 float으로 해결 */
+    width: 740px;
+    height: 130px;
+    background-color: white;
+    vertical-align: top;
+    margin-right: 8px;
+}
+#main-third-ad{
+    float: left; /* display: inline-block 하면 인라인블록사이에 문제생겨서 float으로 해결 */
+    width: 332px;
+    height: 130px;
+    background: #555
+}
+.inline-block{
+    display: inline-block;
+}
